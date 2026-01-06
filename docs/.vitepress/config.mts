@@ -11,6 +11,23 @@ const flutters = [
   { text: '动画组件', link: '/flutter/animation-component' },
   { text: '路由', link: 'www.baidu.com' }
 ]
+
+const electrons = [
+  { text: 'builder打包配置', link: 'www.baidu.com' },
+  { text: '软件更新-全量更新', link: '/flutter/special-effects-component' },
+  { text: '软件更新-增量更新', link: '/flutter/special-effects-component' },
+  { text: '防脱壳', link: '/flutter/animation-component' },
+  { text: '疑难杂症', link: '/flutter/animation-component' },
+  { text: 'win和mac兼容性问题', link: '/flutter/animation-component' },
+  { text: '各种方案', link: 'www.baidu.com' }
+]
+
+const vueReact = [
+  { text: 'Vue2.0', link: 'www.baidu.com' },
+  { text: 'Vue3.0', link: '/flutter/special-effects-component' },
+  { text: 'React', link: '/flutter/special-effects-component' },
+]
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "前端知识库",
@@ -26,10 +43,10 @@ export default defineConfig({
       { text: 'HTML、CSS', items: htmlCss },
       { text: 'JavaScript', items: htmlCss },
       { text: 'Webpack', items: htmlCss },
-      { text: 'Electron', items: htmlCss },
+      { text: 'Electron', items: electrons },
       { text: 'Flutter', items: flutters },
       { text: 'Dart', items: htmlCss },
-      { text: '前端框架', items: htmlCss },
+      { text: '前端框架', items: vueReact },
     ],
 
     // sidebar: [
