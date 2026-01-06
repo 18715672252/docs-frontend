@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "大前端知识点",
   description: "前端各种技术的文档和疑难杂症重难点",
+  base: '/docs-frontend/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
