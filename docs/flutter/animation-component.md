@@ -5,16 +5,20 @@ layout: home
 
 
 features:
-  - title: 旋转组件-RotatedBox
-    details: 这是一个可以让子组件旋转90°的组件，传入int类型，传入数字为旋转90度的多少倍（此组件过于简单，不再详细描述，之作记录）
-  - title: 位移组件-FractionalTranslation
-    details: 这是一个可以让子组件位移的组件，传入Offset，位移的距离是自身宽度的倍数（此组件过于简单，不再详细描述，之作记录）
-  - title: 特效组件
-    details: Lorem ipsum dolor sit amet, c
-  - title: Flutter API
+  - title: RotationTransition
+    details: 动画旋转组件
+  - title: FadeTransition
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Dart API
+  - title: ScaleTransition
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: 路由
+  - title: SizeTransition
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: SildeTransition
+    details: 动画旋转组件
+  - title: PositionedTransition
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: DecoratesBoxTransition
+    details: AnimatedIcon
+  - title: AnimatedIcon
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---

@@ -5,14 +5,17 @@ layout: home
 hero:
   name: "大前端知识点"
   text: "前端各种技术的文档和疑难杂症重难点"
-  tagline: My great project tagline
-#  actions:
-#    - theme: brand
-#      text: Markdown Examples
-#      link: /markdown-examples
-#    - theme: alt
-#     text: API Examples
-#     link: /api-examples
+  tagline: 生于忧患，死于安乐
+  image: 
+    src: /background.jpg
+    alt: 背景图片
+  actions:
+   - theme: brand
+     text: Markdown 实例
+     link: /markdown-examples
+   - theme: alt
+     text: API 实例
+     link: /api-examples
 
 features:
   - title: HTML
