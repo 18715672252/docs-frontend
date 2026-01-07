@@ -6,10 +6,11 @@ const htmlCss = [
 ]
 
 const flutters = [
-  { text: '布局组件', link: 'www.baidu.com' },
+  { text: '布局组件', link: '/flutter/layout' },
   { text: '特效组件', link: '/flutter/special-effects-component' },
   { text: '动画组件', link: '/flutter/animation-component' },
-  { text: '路由', link: '/flutter/router' }
+  { text: '路由', link: '/flutter/router' },
+  { text: '弹框', link: '/flutter/dialog' }
 ]
 
 const electrons = [
