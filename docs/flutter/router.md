@@ -209,7 +209,9 @@ onGenerateRoute: (settings) {
           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
       final offsetAnimation = animation.drive(tween);
 
-      return SlideTransition(
+
+
+
         position: offsetAnimation,
         child: child,
       );
@@ -233,6 +235,35 @@ Navigator.push(
     },
   ),
 );
+
+```
+
+
+## 获取当前页面的路由信息
+```dart
+// 获取当前路由的配置信息，如上一个页面的路由名称及其传递的参数
+RouteSetting route = ModalRoute.of(context).setting;
+// 当前路由如果位于最底层为true，否则为false
+final isFirst = ModalRoute.of(context).isFirst;
+// 当前路由页面是否活跃
+final isActive = ModalRoute.of(context).isActive;
+// 当前路由页面是否是最顶层路由
+final isCurrent = ModalRoute.of(context).isCurrent;
+// 创建路由时PageRoutebuilder中配置的动画
+final animation = ModalRoute.of(context).animation;
+// PageRoutebuilder配置的动画持续时间
+final transitionDuration = ModalRoute.of(context).transitionDuration;
+// 值为false时，push进的新页面背景为透明
+final opaque = ModalRoute.of(context).opaque;
+// 当前页面是否可以被pop出去，true可以，false不可以，如果强行pop会导致黑频
+final canPop = ModalRoute.of(context).canPop;
+// 当前路由为不活跃状态时，是否需要保存路由状态
+// 默认情况下入栈一个新路由时，原来的路由
+// 仍然会被保存状态。设置maintainState为false时
+// 不在栈顶的路由会被释放
+final maintainState = ModalRoute.of(context).maintainState;
+// 当前路由是否可见
+final offstage = ModalRoute.of(context).offstage;
 
 ```
 
