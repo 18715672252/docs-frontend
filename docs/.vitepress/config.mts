@@ -9,7 +9,7 @@ const flutters = [
   { text: '布局组件', link: 'www.baidu.com' },
   { text: '特效组件', link: '/flutter/special-effects-component' },
   { text: '动画组件', link: '/flutter/animation-component' },
-  { text: '路由', link: 'www.baidu.com' }
+  { text: '路由', link: '/flutter/router' }
 ]
 
 const electrons = [
