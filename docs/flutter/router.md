@@ -264,8 +264,13 @@ final canPop = ModalRoute.of(context).canPop;
 final maintainState = ModalRoute.of(context).maintainState;
 // 当前路由是否可见
 final offstage = ModalRoute.of(context).offstage;
-
 ```
+::: tip <Badge type="tip">maintainState如何配置</Badge>
+maintainState须在生成路由页面的类中配置（MaterialPageRoute类中配置）
+:::
+
+
+## 路由监听
 
 ## More
 

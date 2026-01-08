@@ -10,7 +10,8 @@ const flutters = [
   { text: '特效组件', link: '/flutter/special-effects-component' },
   { text: '动画组件', link: '/flutter/animation-component' },
   { text: '路由', link: '/flutter/router' },
-  { text: '弹框', link: '/flutter/dialog' }
+  { text: '弹框', link: '/flutter/dialog' },
+  { text: '效果制作', link: '/flutter/effect-production' }
 ]
 
 const electrons = [
