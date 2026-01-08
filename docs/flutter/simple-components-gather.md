@@ -120,4 +120,50 @@ class _DemoState extends State<Demo> with SingleTickerProviderStateMixin {
 }
 
 ```
+## LimitedBox {#LimitedBox}
+```dart
+Column(
+  children: [
+    LimitedBox(
+      maxHeight: 100,
+      child: Container(color: Colors.red)
+    )
+  ]
+)
+```
+
+::: tip
+LimitedBox
+在父级约束无边界的情况下，使用LimitedBox 可为子组件设置一个尺寸上限。
+例如在二个Column 或竖者滾动的 ListView容器里，垂直方向的约束是无边界的（最大尺寸约束为证无穷），
+此时可用 LimitedBox 的 maxHeight 属性为子组件设置高度
+
+值得注意的是，maxHeight属性，并不是最大高度的意思，而是指遇到父级约束无边界时，采用的高度。
+若父级约束有边界，则LimitedBox则完全不会有效果，也并不会妨碍其child
+选择一个高于LimitedBox的maxHeigth的高度，但不违反LimitedBox的父级约束的值
+:::
+
+
+## AnimatedSwitcher {#AnimatedSwitcher}
+```dart
+AnimatedSwitcher(
+  duration: Duration(sedonds: 2),
+  child: flag : Text(1) : FlutterLog()
+)
+
+// 简化版的AnimatedSwitcher,
+// 有点组件类型相同没有也会有动画效果
+AnimatedCrossFade(
+  duration: Duration(sedonds: 2),
+  firstChild: Text(1),
+  secondChild: Text(2)
+)
+
+```
+::: tip
+AnimatedSwitcher组件的主要作用就是新旧组件切换时的动画
+然后若两个组件类型相同又没有设置key则新旧组件切换没有动画效果
+如需对相同类型的组件添加切换效果，可以给两个组件添加不同的key
+:::
+
 

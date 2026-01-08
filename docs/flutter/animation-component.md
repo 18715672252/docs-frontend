@@ -24,5 +24,10 @@ features:
   - title: DecoratesBoxTransition
     details: AnimatedIcon
   - title: AnimatedIcon
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    details: 两个ICON组件切换的动画
+  - title: AnimatedOpacity
+    details: 透明度变化的动画
+  - title: AnimatedSwitcher
+    details: 子组件发生变化时，新旧组件切换的动画
+    link: /flutter/simple-components-gather#AnimatedSwitcher
 ---

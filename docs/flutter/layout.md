@@ -15,12 +15,22 @@ features:
     link: /flutter/flow
   - title: FractionallySizedBox
     details: 相对与父组件最大约束的百分比设置子组件宽度，对子组件是紧约束
-  - title: 相对与父组件宽度的百分比设置子组件宽度
-    details: 相对与父组件宽度的百分比设置子组件宽度
-  - title: DecoratesBoxTransition
-    details: AnimatedIcon
-  - title: AnimatedIcon
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: LimitedBox
+    details: 点击查看详情  
+    link: /flutter/simple-components-gather#LimitedBox
+  - title: Spacer
+    details: 弹性留白
+  - title: Expanded
+    details: 自适应沾满Row和Column的剩余空间，紧约束
+  - title: Flexible
+    details: 自适应沾满Row和Column的剩余空间，可以通过配置fit设置约束
+  - title: Offstage
+    details: 让组件隐藏，使用GlobalKey仍然获取
+  - title: Visibility
+    details: 让组件隐藏，从组件树移除
+  - title: IndexedStack
+    details: 自适应沾满Row和Column的剩余空间，可以通过配置fit设置约束
+  - title: RepaintBoundary
+    details: 开启新图层绘制组件防止发生回流。可用于组件截图
+    link: 
 ---
-
-# 布局类组件简介
