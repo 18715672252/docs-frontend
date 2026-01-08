@@ -11,4 +11,6 @@ features:
     link: /flutter/zebra-effect-of-font
   - title: 刮刮乐
     link: /flutter/guaguale
+  - title: CustomPaint-Path的路径动画
+    link: /flutter/custompaint-path-animation
 ---

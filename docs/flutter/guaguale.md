@@ -1,5 +1,5 @@
 # 刮刮乐效果制作
-```dart{100}
+```dart{93}
 import 'package:flutter/material.dart';
 
 void main(List<String> args) {
@@ -79,21 +79,14 @@ class MyCustomPainter123 extends CustomPainter {
 
   Paint p = Paint();
 
-  TextPainter text = TextPainter(
-    textDirection: TextDirection.ltr,
-    text: TextSpan(
-      text: '一等奖',
-      style: TextStyle(fontSize: 80, color: Colors.red),
-    ),
-  );
   @override
   void paint(Canvas canvas, Size size) {
-    text.layout();
     final w = size.width;
     final h = size.height;
     p.color = Colors.brown; // 绘制点线面的颜色
     p.style = PaintingStyle.fill; // 填充还是描边
     p.strokeWidth = 10; // 当是描边时边的宽度
+    // 保存图层
     canvas.saveLayer(Rect.fromLTWH(0, 0, w, h), p);
     p.color = Colors.blue;
     // 还是基于原点绘制
@@ -107,8 +100,6 @@ class MyCustomPainter123 extends CustomPainter {
     canvas.drawPath(path2, p);
 
     canvas.restore();
-    p.color = Colors.deepPurpleAccent;
-    canvas.drawCircle(Offset(0, 0), 40, p);
   }
 
   @override

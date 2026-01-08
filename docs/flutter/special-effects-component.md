@@ -11,10 +11,10 @@ features:
     details: 这是一个可以让子组件位移的组件，传入Offset，位移的距离是自身宽度的倍数（此组件过于简单，不再详细描述，之作记录）
   - title: ImageFiltered
     details: 高斯模糊组件
-    link: /flutter/simple-components-gather
+    link: /flutter/simple-components-gather#高斯模糊组件
   - title: PhysicalModel
     details: 阴影组件
-    link: /flutter/simple-components-gather
+    link: /flutter/simple-components-gather#阴影组件
   - title: CustomPaint组件
     details: Canvas
     link: /flutter/custompaint

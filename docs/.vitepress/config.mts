@@ -11,7 +11,8 @@ const flutters = [
   { text: '动画组件', link: '/flutter/animation-component' },
   { text: '路由', link: '/flutter/router' },
   { text: '弹框', link: '/flutter/dialog' },
-  { text: '效果制作', link: '/flutter/effect-production' }
+  { text: '效果制作', link: '/flutter/effect-production' },
+  { text: 'Flutter API', link: '/flutter/flutter-api' }
 ]
 
 const electrons = [
@@ -38,7 +39,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     logo: '/logo.png',
-    outline: [1, 6],
+    outline: [2, 6],
     outlineTitle: '文章目录',
     nav: [
       { text: 'Home', link: '/' },

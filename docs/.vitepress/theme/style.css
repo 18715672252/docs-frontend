@@ -30,3 +30,11 @@
   --vp-c-brand-1: #646cff;
   --vp-c-brand-2: #747bff;
 }
+
+.aside-container {
+    width: 250px !important;
+}
+
+.aside {
+    max-width: 310px !important;
+}
