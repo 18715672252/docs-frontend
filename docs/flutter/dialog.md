@@ -1,7 +1,7 @@
 # 弹框交互
 
-
 ## 根据平台展示对话框
+
 ```js
 showAdaptiveDialogOpen() async {
   final result = await showAdaptiveDialog(
@@ -41,7 +41,8 @@ showAdaptiveDialogOpen() async {
 }
 ```
 
-## 自定义弹框内容 Dialog组件的使用 :fire:
+## 自定义弹框内容 Dialog 组件的使用 :fire:
+
 ```dart
 showDialog(
   context: context,
@@ -66,6 +67,7 @@ showDialog(
 ```
 
 ## 底部弹框 :cyclone:
+
 ```dart
 showBottom(BuildContext context) {
     // 弹出弹框
@@ -196,7 +198,8 @@ bottomPickerNum(context) {
 
 ```
 
-## flutter自带的日期选择
+## flutter 自带的日期选择
+
 ```dart
 // 日期选择弹框。日历面板形式
 // showDatePicker(context: context, firstDate: DateTime(2023), lastDate: DateTime(2026));
@@ -207,8 +210,8 @@ bottomPickerNum(context) {
 // showTimePicker(context: context, initialTime: TimeOfDay.now());
 ```
 
-
 ## 自定义从头部弹出的弹框
+
 ```dart
 showGeneralDialog(
   barrierDismissible: true,
@@ -253,5 +256,80 @@ Tooltip(
   child: 
 )
 
+
+```
+## ToggleButtons
+
+```dart
+// 多选动效按钮
+List<bool> l = [true, false, true];
+ToggleButtons(
+  color: Colors.red,
+  selectedColor: Colors.amber,
+  fillColor: Colors.blue,
+  isSelected: l,
+  splashColor: Colors.blueGrey,
+  onPressed: (index) {
+    print(index);
+    setState(
+      () {
+        l[index] = !l[index];
+      },
+    );
+  },
+  children: [
+    Icon(Icons.ac_unit),
+    Icon(Icons.dangerous),
+    Icon(Icons.wifi)
+  ],
+)
+```
+
+## 弹出菜单 PopupMenuButton
+
+```dart
+PopupMenuButton<String>(
+  icon: Icon(Icons.more_vert, color: Colors.blue),
+  tooltip: '更多选项',
+  elevation: 8,
+  padding: EdgeInsets.zero,
+  onSelected: (String value) {
+    print(value);
+  },
+  itemBuilder: (BuildContext context) {
+    return [
+      PopupMenuItem<String>(
+        value: '添加',
+        child: Row(
+          children: [
+            Icon(Icons.add, color: Colors.green),
+            SizedBox(width: 8),
+            Text('添加项目'),
+          ],
+        ),
+      ),
+      PopupMenuItem<String>(
+        value: '删除',
+        child: Row(
+          children: [
+            Icon(Icons.delete, color: Colors.red),
+            SizedBox(width: 8),
+            Text('删除项目'),
+          ],
+        ),
+      ),
+      PopupMenuItem<String>(
+        value: '编辑',
+        child: Row(
+          children: [
+            Icon(Icons.edit, color: Colors.blue),
+            SizedBox(width: 8),
+            Text('编辑项目'),
+          ],
+        ),
+      ),
+    ];
+  },
+)
 
 ```
