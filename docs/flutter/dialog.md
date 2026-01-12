@@ -244,3 +244,14 @@ showGeneralDialog(
 );
 
 ```
+
+# Tooltip
+```dart
+// 提示信息组件，用户长安给出提示信息
+Tooltip(
+  meesage: '提示信息'，
+  child: 
+)
+
+
+```
