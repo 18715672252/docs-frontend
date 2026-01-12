@@ -377,3 +377,45 @@ class _MyAPIState extends State<MyAPI> with WidgetsBindingObserver {
 
 
 ```
+
+
+## MediaQuery 查询设备屏幕信息
+```dart
+// 获取设备尺寸
+MediaQuery.of(context).size
+
+// 获取当前设备的横竖屏状态
+MediaQuery.of(context).orientation
+// 竖屏
+Orientation.portrait
+// 横屏
+Orientation.landscape
+
+// 像素密度
+MediaQuery.of(context).devicePixelRatio
+
+//  屏幕的物理缺陷。刘海屏
+MediaQuery.of(context).viewPadding
+
+// 系统级别的遮挡如弹出的键盘
+MediaQuery.of(context).viewInsets
+
+// viewInsets和viewPadding的综合
+MediaQuery.of(context).padding
+
+// 用户偏好设置
+MediaQuery.of(context).platformBrigthness
+
+
+
+
+```
+
+
+## NotificationListener 通知拦截
+```dart
+
+
+
+
+```
