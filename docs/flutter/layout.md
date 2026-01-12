@@ -32,5 +32,8 @@ features:
     details: 自适应沾满Row和Column的剩余空间，可以通过配置fit设置约束
   - title: RepaintBoundary
     details: 开启新图层绘制组件防止发生回流。可用于组件截图
-    link: 
+    link:
+  - title: Column和Row
+    details: 如果Row里面嵌套Row，或者Column里面再嵌套Column，那么只有最外面的Row或Column会占用尽可能大的空间，里面Row或Column所占用的空间为实际大小
+    link:
 ---
