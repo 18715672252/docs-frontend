@@ -271,6 +271,60 @@ maintainState须在生成路由页面的类中配置（MaterialPageRoute类中�
 
 
 ## 路由监听
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo'
+      // 路由监听
+      navigatorObservers: [MyRouterObserver()],
+      initialRoute: '/', // 初试路由
+      onUnknownRoute:
+          (settings) => MaterialPageRoute(
+            builder: (BuildContext context) => Page404(),
+          ), // 404路由
+      routes: {'/': (context) => Page1(), '/page2': (context) => Page2()},
+      // 当通过pushNamed跳转路由时，没有找到具体的路径，
+      // 就会在onGenerateRoute函数中找返回的页面
+      // onGenerateRoute: (settings) => {},
+    );
+  }
+}
+
+// 路由监听类
+class MyRouterObserver extends NavigatorObserver {
+  // 当调用插入路由时调用
+  @override
+  void didPush(route, previousRoute) {
+    super.didPush(route, previousRoute);
+    // route要去的路由
+    print(route.settings.name); // 路由名称，动态路跳转由此值为null
+    print(route.settings.arguments); // 路由携带的参数，动态路跳转由此值为null
+    // 当前路由
+    print(previousRoute);
+  }
+
+  // 弹出路由时带哦用
+  @override
+  void didPop(route, previousRoute) {
+    super.didPop(route, previousRoute);
+    print(route);
+    print(previousRoute);
+  }
+
+  // 移除路由时带哦用
+  @override
+  void didRemove(Route route, Route? previousRoute) {
+    // TODO: implement didRemove
+    super.didRemove(route, previousRoute);
+  }
+}
+
+```
 
 ## More
 

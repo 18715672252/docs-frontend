@@ -342,3 +342,13 @@ PopupMenuButton<String>(
 
 
 ```
+
+
+## 底部弹出消息 SnackBar
+```dart
+showSnackBarS(BuildContext ctx) {
+  final s = SnackBar(content: Text('提示雄安锡'));
+  ScaffoldMessenger.maybeOf(ctx)!.showSnackBar(s);
+}
+
+```

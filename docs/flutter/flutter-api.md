@@ -369,11 +369,127 @@ class _MyAPIState extends State<MyAPI> with WidgetsBindingObserver {
 ```
 
 ## Flutter中key与作用
-::: tip
-1.ValueKey 通过传入任何数据类型创建一个key来标识元素，用于diff，ValueKey(arg)
+::: info
+1. ValueKey 通过传入任何数据类型创建一个key来标识元素，用于diff，ValueKey(arg)
+ValueKey生成的key看是否相同传入的参数，如果参数相同则生成的key也相同，局部key再同一级别必须具有唯一性
+2. ObjectKey根据传入的对象来生成key，如果传入的对象指向同一个地址，则会生成相同的key
+3. UniqueKey永远不会有两个相同的
+:::
+
+
+
+## Flutter中全局key的作用
+::: info
+GlobalKey必须再整个APP唯一的key把GlobalKey给到widget，层级改变也能让某个widget保持状态<br>
+final element = _globalKey.currentState as _BoxState;获取子组件所对应的Element中所有的state和方法<br>
+element.setState()调用子组件的setState方法<br>
+element.a = 100 修改子组件的状态<br>
+element.fn() 调用子组件widget所对应的element的方法<br>
+
+
+final dom =  key1.currentContext?.findRenderObject() as RenderBox;   // 获取子组件的渲染属性
+print(dom.localToGlobal(Offset.zero)); // 获取元素相对于屏幕的位置
+print(dom.size); // 获取元素的大小包括margin和padding
+:::
+::: warning
+不要再build中创建key和initState中赋值key，
+最好放在stateFluWidget中的state类中，
+当作state类中的成员变量来初始化key<br>
+key不是命名参数，直接传入即可【Foo(key: key1)】
 :::
 ```dart
 
+
+/// 
+import 'package:flutter/material.dart'; 
+
+
+/// widget和element的关系
+/// widget是一个描述UI的类（是一个蓝图），element是widget的实例化对象
+/// 每个widget都会对应一个element，样式和外观是由widget决定的，状态（state）是由element决定的
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final _globalKey = GlobalKey();
+  void _incrementCounter() {
+    // _globalKey.currentContext
+    // _globalKey.currentState
+    // _globalKey.currentWidget
+    // 获取某个widget的状态
+    final state = _globalKey.currentState as _BoxState;
+    
+    state._counter;
+    state.setState((){})
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+              // 使用GlobalKey对子组件进行标记
+              Box(color: Colors.red, title: 'red', key: _globalKey,)
+          ]
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+// 声明一个组件继承widget自动带了key参数（命名参数），使用该组件直接传入需要的key即可
+class Box extends StatefulWidget {
+  const Box({super.key, required this.title, required this.color});
+  final String title;
+  final Color color;
+
+  @override
+  State<Box> createState() => _BoxState();
+}
+
+class _BoxState extends State<Box> {
+  int _counter = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Container(width: 200, height: 200, color: widget.color,child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(widget.title),
+        Text('计数器：$_counter'),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            // backgroundColor: widget.color,
+            shape: BeveledRectangleBorder()
+          ),
+          onPressed: () {
+            setState(() {
+              _counter++;
+            });
+          },
+          child: const Text('Increment'),
+        ),
+      ],
+    ));
+  }
+}
 
 
 ```
@@ -414,7 +530,81 @@ MediaQuery.of(context).platformBrigthness
 
 ## NotificationListener 通知拦截
 ```dart
+// dispatch的BuildContext必须是NotificationListener子级的context
+import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Text Path Animation',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Demo(),
+    );
+  }
+}
+
+class Demo extends StatefulWidget {
+  const Demo({super.key});
+
+  @override
+  State<Demo> createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  List<bool> l = [true, false, true];
+
+  dynamic mes = '';
+
+  showSnackBarS(BuildContext ctx) {
+    final s = SnackBar(content: Text('提示雄安锡'));
+    ScaffoldMessenger.maybeOf(ctx)!.showSnackBar(s);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('小组件'),
+      ),
+      body: NotificationListener(
+        onNotification: (notification) {
+          if (notification is MyNot) {
+            setState(() {
+              mes = notification.message;
+            });
+            return true; // 拦截不再冒泡
+          }
+          return false; // 继续向上冒泡
+        },
+        child: Column(
+          children: [
+            Text('接受的消息：${mes}'),
+            Builder(builder: (ctx) {
+              return ElevatedButton(
+                onPressed: () {
+                  MyNot(Random().nextInt(200)).dispatch(ctx);
+                },
+                child: Text('发送消息'),
+              );
+            }),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class MyNot extends Notification {
+  final dynamic message;
+  MyNot(this.message);
+}
 
 
 

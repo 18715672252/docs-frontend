@@ -13,4 +13,7 @@ features:
     link: /flutter/guaguale
   - title: CustomPaint-Path的路径动画
     link: /flutter/custompaint-path-animation
+  - title: 自定义滚动边缘效果
+    link: /flutter/scroll-to-edge
+    
 ---
