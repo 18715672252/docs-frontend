@@ -15,5 +15,13 @@ features:
     link: /flutter/custompaint-path-animation
   - title: 自定义滚动边缘效果
     link: /flutter/scroll-to-edge
+  - title: 对话框动画为缩放动画
+    link: /flutter/show-scale-dialog
+  - title: Dialog内复选框无法选中问题方案一
+    link: /flutter/dialog-checkbox
+  - title: Dialog内复选框无法选中问题方案二
+    link: /flutter/dialog-checkbox
+  - title: List列表滚动保活方案
+    link: /flutter/listview-keeplive
     
 ---

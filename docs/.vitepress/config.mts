@@ -12,7 +12,7 @@ const flutters = [
   { text: '手势组件', link: '/flutter/flutter-api' },
   { text: '路由', link: '/flutter/router' },
   { text: '弹框-弹出组件', link: '/flutter/dialog' },
-  { text: '效果制作', link: '/flutter/effect-production' },
+  { text: '效果制作-方案', link: '/flutter/effect-production' },
   { text: 'Flutter API', link: '/flutter/flutter-api' },
   { text: '基础组件', link: 'flutter/basic-components'}
 ]

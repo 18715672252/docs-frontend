@@ -248,12 +248,17 @@ ElevatedButton(
 
 ## this.nextTick
 ```dart
-import 'dart:math';
+/*
+单帧的执行顺序
+1. 调度阶段：SchedulerBinding 调度当前帧开始执行
+2. Build 构建阶段：执行 Widget 的 build() 方法，生成 / 更新 Element、RenderObject 树
+3. Layout 布局阶段：根据 RenderObject 的约束，计算所有控件的大小和位置
+4 .Paint 绘制阶段：将计算好布局的控件，绘制到画布（Canvas）上，完成「屏幕像素渲染」
+5 .✅ addPostFrameCallback 回调执行：当前帧绘制完成、还未结束时，执行注册的回调函数
+帧结束：当前帧的所有任务完成，等待下一帧调度
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:logger/logger.dart';
-
+只有在 addPostFrameCallback 的回调里，因为「布局 + 绘制都已完成」，能拿到控件最终、真实、渲染完成后的尺寸和位置信息
+*/
 void main() {
   // WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -300,7 +305,7 @@ class _MyAPIState extends State<MyAPI> with WidgetsBindingObserver {
      * addPostFrameCallback 是 WidgetsBinding 类提供的帧回调方法，
      * 属于 Flutter 帧生命周期中的 “后处理阶段” 回调，其核心定位是：
      * 在当前帧的 UI 树完全构建（build）并渲染（paint）到屏幕后，执行一次特定逻辑，且不会触发新的帧请求
-     * 当前帧绘制完成后执行
+     * 当前帧绘制完成前执行
      * 1.在initState获取元素的宽高，直接通过key获取宽高currentContext为null，需要在组件渲染完毕后获取
      * 
      * 
@@ -367,6 +372,11 @@ class _MyAPIState extends State<MyAPI> with WidgetsBindingObserver {
   }
 }
 ```
+::: info 
+与nextFrame：返回一个 Future，会等待 当前帧完全结束，然后在 下一帧开始之前 执行回调，属于「下一帧的前置任务」<br>
+与addPersistentFrameCallback：「永久帧回调」，每一帧都会执行一次
+
+:::
 
 ## Flutter中key与作用
 ::: info
