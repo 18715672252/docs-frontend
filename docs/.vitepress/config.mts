@@ -9,7 +9,7 @@ const flutters = [
   { text: '布局组件', link: '/flutter/layout' },
   { text: '特效组件', link: '/flutter/special-effects-component' },
   { text: '动画组件', link: '/flutter/animation-component' },
-  { text: '手势组件', link: '/flutter/flutter-api' },
+  { text: '命中测试-手势', link: '/flutter/flutter-api' },
   { text: '路由', link: '/flutter/router' },
   { text: '弹框-弹出组件', link: '/flutter/dialog' },
   { text: '效果制作-方案', link: '/flutter/effect-production' },
@@ -18,7 +18,7 @@ const flutters = [
 ]
 
 const electrons = [
-  { text: 'builder打包配置', link: 'www.baidu.com' },
+  { text: 'builder打包配置', link: '/electron/package-builder-config' },
   { text: '软件更新-全量更新', link: '/flutter/special-effects-component' },
   { text: '软件更新-增量更新', link: '/flutter/special-effects-component' },
   { text: '防脱壳', link: '/flutter/animation-component' },
@@ -33,6 +33,13 @@ const vueReact = [
   { text: 'React', link: '/flutter/special-effects-component' },
 ]
 
+
+const darts = [
+  { text: 'dart基础', link: '/dart-basic/index1' },
+  { text: 'dart高级', link: 'www.baidu.com' },
+  { text: '类与对象', link: '/dart-basic/object' },
+]
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "前端知识库",
@@ -45,12 +52,12 @@ export default defineConfig({
     outlineTitle: '文章目录',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'HTML、CSS', items: htmlCss },
+      // { text: 'HTML、CSS', items: htmlCss },
       { text: 'JavaScript', items: htmlCss },
       { text: 'Webpack', items: htmlCss },
       { text: 'Electron', items: electrons },
       { text: 'Flutter', items: flutters },
-      { text: 'Dart', items: htmlCss },
+      { text: 'Dart', items: darts },
       { text: '前端框架', items: vueReact },
     ],
 
