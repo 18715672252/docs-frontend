@@ -338,4 +338,68 @@ class Abc with A, B {
 }
 
 
+// 通过on关键字指定混入只能在某种类上使用
+abstract class B {
+
+}
+
+mixin A on B {
+
+}
+
+
+class C extends B with A {
+  
+}
+
+
+```
+
+
+## 泛型类
+```dart
+class Cc<T> {
+  Set s = <T>{};
+
+  Cc(this.s);
+
+
+
+}
+
+main () {
+  Cc s = Cc<String>({'1'});
+  Cc s1 = Cc<int>({1});
+}
+
+
+
+```
+
+
+## 泛型接口
+```dart
+abstract class Cahe<T> {
+  getByKey(String key);
+  void setByKey(String key, T value);
+}
+
+
+
+// 泛型接口，泛型首先传给类名，在传给接口
+class FileCache<T> implements Cahe<T> {
+  @override
+  getByKey(String key) {
+  }
+
+  @override
+  void setByKey(String key, T value) {
+  }
+
+}
+main () {
+  var f = FileCache<String>();
+}
+
+
 ```

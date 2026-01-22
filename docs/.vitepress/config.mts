@@ -35,7 +35,7 @@ const vueReact = [
 
 const darts = [
   { text: 'dart基础', link: '/dart-basic/index1' },
-  { text: 'dart高级', link: 'www.baidu.com' },
+  { text: 'dart高级', link: '/dart-basic/dart-advanced' },
   { text: '类与对象', link: '/dart-basic/object' },
 ]
 

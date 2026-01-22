@@ -1,5 +1,12 @@
 # Dialog内无法选中复选框修复方案
 
+
+::: info
+出现原因：
+setState方法只会针对当前context的子树重新build，但是我们的对话框并不是在_DialogRouteState的build 方法中构建的，而是通过showDialog单独构建的，所以在_DialogRouteState的context中调用setState是无法影响通过showDialog构建的UI的。另外，我们可以从另外一个角度来理解这个现象，前面说过对话框也是通过路由的方式来实现的，那么上面的代码实际上就等同于企图在父路由中调用setState来让子路由更新，这显然是不行的！
+
+:::
+
 ## 方案一   使用标脏的方式
 ```dart
 class HomePage extends StatefulWidget {
@@ -216,5 +223,6 @@ class _HomePageState extends State<HomePage> {
 
 ::: info 
 
-执行StatefulBuilder的builder函数中餐宿的第二个参数则builder将重新执行
+执行StatefulBuilder的builder函数中参数的第二个参数则<br>
+会重新builder函数
 :::

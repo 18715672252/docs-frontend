@@ -116,7 +116,9 @@ every // 每一项都满足条件，才返回true
 l1.expand((item) => item).toList(); // 数组拉平
 
 
-
+// 判断元素存不存在
+List l = [1,2,3];
+l.contains(1);
 
 
 ```
@@ -224,6 +226,91 @@ String user(String name, [int age], { String sex = 200 }) {}
 
 // 默认必填参数, 可选参数，命名可选参数并添加默认值
 String user(String name, [int age], { required String sex = 200 }) {}
+
+
+```
+
+
+## 函数的泛型
+```dart
+// 泛型T
+T getData<T>(T a) {
+  return a;
+}
+
+
+
+```
+
+## 枚举
+::: info
+数量固定的常量值，通过enum关键字声明
+:::
+
+```dart
+enum Color {
+  red,
+  green,
+  blue
+}
+
+
+// 获取枚举中所有的value
+List<Color> colors = Color.values;
+
+// 通过index获取枚举元素的索引值
+int i = Color.green.index
+
+
+
+
+
+```
+
+
+## 第三方库的引入-仅引入部分内容
+::: info
+1. 包含引入
+2. 排除引入
+当库名命名冲突时，通过as声明别名
+
+文件头部通过：<br>
+libartry util 声明库名(util时库的名称)
+:::
+
+```dart
+// 只将包中f1和f3暴露，来提供使用
+import 'packed' show f1, f3; 
+
+// 将包中f1和f3隐藏，包中的其他内容都可以使用
+import 'packed' hide f1, f3; 
+
+
+// 给增加别名，解决库名冲突的问题
+import 'packed' as packed;
+packed.f1()
+
+
+// 延迟加载库（懒加载库）
+import 'packed' deferred as pack;
+Future greet() async {
+  // 加载库
+  await pack.loadLibrary()
+  // 使用库中方法
+  pack.f1()
+}
+
+```
+
+
+## 分库与主库，part与part of
+::: info
+在分库文件中使用part of util;与主库建立联系
+在主库文件中使用part 'sub1.dart';与分库建立联系
+:::
+```dart
+
+
 
 
 ```
