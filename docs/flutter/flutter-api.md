@@ -390,6 +390,7 @@ ValueKey生成的key看是否相同传入的参数，如果参数相同则生成
 
 ## Flutter中全局key的作用
 ::: info
+class _BoxState extends State<br>
 GlobalKey必须再整个APP唯一的key把GlobalKey给到widget，层级改变也能让某个widget保持状态<br>
 final element = _globalKey.currentState as _BoxState;获取子组件所对应的Element中所有的state和方法<br>
 element.setState()调用子组件的setState方法<br>
@@ -619,3 +620,49 @@ class MyNot extends Notification {
 
 
 ```
+
+
+## TextPainter获取文本的Size
+::: info
+在文本不绘制到屏幕上的情况下
+获取文本的大小
+在容器中占多少行，每行的宽度等等
+:::
+```dart
+TextPainter tp = TextPainter(
+      text: TextSpan(
+        text: _text,
+        style: TextStyle(color: Colors.red, fontSize: 20),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+tp.layout(maxWidth: 200);
+
+
+// 计算文本有多少行
+List lines = tp.computeLineMetrics();
+
+
+// 计算某一行文本的宽度（高度同理）
+lines[index].width
+
+
+
+```
+
+
+
+## markNeedsLayout、markNeedsPaint、markNeedsBuild
+::: tip
+1. markNeedsBuild:Build → Layout → Paint Widget 状态变化（如 setState）、依赖更新
+调用方式：final ele = (context as Element).markNeedsBuild();
+2. markNeedsLayout:Layout → Paint 尺寸 / 位置变化（如宽度、字体大小、子节点排列）
+3. markNeedsPaint:Paint 外观变化（如颜色、透明度、文本内容，尺寸不变）
+
+:::
+
+| 方法        |      作用对象      |  调用方式 |
+| ------------- | :-----------: | ----: |
+| markNeedsBuild() | Element（元素树节点） | context调用 |
+| markNeedsLayout()	| RenderObject（渲染树节点）| RenderObject类中直接调用 |
+| markNeedsPaint()	 | RenderObject（渲染树节点 | RenderObject类中直接调用 |
