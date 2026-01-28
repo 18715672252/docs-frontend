@@ -8,7 +8,7 @@ const htmlCss = [
 const flutters = [
   { text: '布局组件', link: '/flutter/layout' },
   { text: '特效组件', link: '/flutter/special-effects-component' },
-  { text: '动画组件', link: '/flutter/animation-component' },
+  { text: '动画相关', link: '/flutter/animation-component' },
   { text: '命中测试-手势', link: '/flutter/flutter-api' },
   { text: '路由', link: '/flutter/router' },
   { text: '弹框-弹出组件', link: '/flutter/dialog' },
@@ -16,6 +16,7 @@ const flutters = [
   { text: 'Flutter API', link: '/flutter/flutter-api' },
   { text: '基础组件', link: 'flutter/basic-components'},
   { text: 'Flutter高级', link: 'flutter/flutter-advanced'},
+  { text: '三方库', link: 'flutter/packs'},
 ]
 
 const electrons = [
@@ -24,6 +25,7 @@ const electrons = [
   // { text: '软件更新-增量更新', link: '/flutter/special-effects-component' },
   // { text: '防脱壳', link: '/flutter/animation-component' },
   { text: '疑难-方案', link: '/electron/difficult-plan' },
+  { text: 'electronAPI', link: '/electron/difficult-plan' },
   // { text: 'win和mac兼容性问题', link: '/flutter/animation-component' },
 ]
 
@@ -31,6 +33,10 @@ const vueReact = [
   { text: 'Vue2.0', link: 'www.baidu.com' },
   { text: 'Vue3.0', link: '/flutter/special-effects-component' },
   { text: 'React', link: '/flutter/special-effects-component' },
+  { text: 'Js基础', link: '/flutter/special-effects-component' },
+  { text: 'Js高级', link: '/flutter/special-effects-component' },
+  { text: 'Js程序设计', link: '/flutter/special-effects-component' },
+  { text: 'CSS设计', link: '/CSS/index' },
 ]
 
 
@@ -38,6 +44,12 @@ const darts = [
   { text: 'dart基础', link: '/dart-basic/index1' },
   { text: 'dart高级', link: '/dart-basic/dart-advanced' },
   { text: '类与对象', link: '/dart-basic/object' },
+]
+
+const algorithms = [
+  { text: '双指针', link: '/dart-basic/index1' },
+  { text: '滑动窗口', link: '/dart-basic/dart-advanced' },
+  { text: '二分法', link: '/dart-basic/object' },
 ]
 
 // https://vitepress.dev/reference/site-config
@@ -53,12 +65,13 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       // { text: 'HTML、CSS', items: htmlCss },
-      { text: 'JavaScript', items: htmlCss },
+      // { text: 'JavaScript', items: htmlCss },
       // { text: 'Webpack', items: htmlCss },
       { text: 'Electron', items: electrons },
       { text: 'Flutter', items: flutters },
       { text: 'Dart', items: darts },
       { text: '前端', items: vueReact },
+      { text: '算法集合', items: algorithms },
     ],
 
     // sidebar: [

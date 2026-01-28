@@ -167,3 +167,8 @@ AnimatedSwitcher组件的主要作用就是新旧组件切换时的动画
 :::
 
 
+## CurvedAnimation {#CurvedAnimation}
+```dart
+CurvedAnimation(parent: _controller, curve: curve)
+
+```

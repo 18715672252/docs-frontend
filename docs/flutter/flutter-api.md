@@ -666,3 +666,196 @@ lines[index].width
 | markNeedsBuild() | Element（元素树节点） | context调用 |
 | markNeedsLayout()	| RenderObject（渲染树节点）| RenderObject类中直接调用 |
 | markNeedsPaint()	 | RenderObject（渲染树节点 | RenderObject类中直接调用 |
+
+
+
+
+## 寻找祖先的API
+::: info
+* 1. context.findAncestorRenderObjectOfType()
+* 2. context.findAncestorStateOfType()
+* 3. context.findAncestorWidgetOfExactType()
+* 4. context.findRootAncestorStateOfType()
+* 5. context.getInheritedWidgetOfExactType()
+* 6. context.dependOnInheritedWidgetOfExactType
+:::
+### findAncestorStateOfType
+::: info 
+查找祖先组件的state，需要传泛型
+* 1. context.findAncestorStateOfType();
+* 2. 找最里层
+:::
+```dart{82-83}
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Demo(),
+    );
+  }
+}
+
+class Demo extends StatefulWidget {
+  const Demo({super.key});
+
+  @override
+  State<Demo> createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  int a = 0;
+
+
+  String s = '通过findAncestorStateOfType获取的数据';
+
+  late TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController(text: '孙成龙');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: ChildDemo(),
+      ),
+    );
+  }
+}
+
+class ChildDemo extends StatefulWidget {
+  const ChildDemo({super.key});
+
+  @override
+  State<ChildDemo> createState() => _ChildDemoState();
+}
+
+class _ChildDemoState extends State<ChildDemo> {
+  @override
+  Widget build(BuildContext context) {
+    // 泛型传入要查询的祖先的state类型
+    final parentState = context.findAncestorStateOfType<_DemoState>();
+    String? s = parentState?.s;
+    return Container(
+      child: Text(s!),
+    );
+  }
+}
+
+
+```
+### findAncestorWidgetOfExactType
+::: info
+查找祖先对应的widget
+:::
+```dart
+import 'package:flutter/material.dart';
+
+void main(List<String> args) {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Demo(),
+    );
+  }
+}
+
+class Demo extends StatefulWidget {
+  final String widgets = '祖先widget里面的数据';
+  const Demo({super.key});
+
+  @override
+  State<Demo> createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  int a = 0;
+
+  late TextEditingController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController(text: '孙成龙');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    
+    return Scaffold(
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: ChildDemo(),
+      ),
+    );
+  }
+}
+
+class ChildDemo extends StatefulWidget {
+  const ChildDemo({super.key});
+
+  @override
+  State<ChildDemo> createState() => _ChildDemoState();
+}
+
+class _ChildDemoState extends State<ChildDemo> {
+  @override
+  Widget build(BuildContext context) {
+    final ancestorWidget = context.findAncestorWidgetOfExactType<Demo>(); // [!code warning]
+    String s1 = ancestorWidget!.widgets; // [!code warning]
+    return Column(
+      children: [
+        Container(
+          child: Text(s!),
+        ),
+        Text(s1),
+      ],
+    );
+  }
+}
+```
+### getInheritedWidgetOfExactType
+### dependOnInheritedWidgetOfExactType
+### findAncestorRenderObjectOfType
+::: info
+查找祖先中对应RenderObject的类型
+
+:::
+### findRootAncestorStateOfType
+::: info
+和findAncestorStateOfType类似
+找最外层
+
+:::

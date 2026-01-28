@@ -30,4 +30,10 @@ features:
   - title: AnimatedSwitcher
     details: 子组件发生变化时，新旧组件切换的动画
     link: /flutter/simple-components-gather#AnimatedSwitcher
+  - title: 动画控制器驱动Tween
+    details: 动画控制器驱动Tween的各种方法
+    link: /flutter/animation-controller-tween
+  - title: CurvedAnimation
+    details: 对动画控制器的二次包装
+    link: /flutter/simple-components-gather#CurvedAnimation
 ---

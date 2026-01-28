@@ -72,3 +72,70 @@ class Adb {
 
 
 ```
+
+## Future
+::: info 
+ * Future的三种状态
+   * 1. Uncompleted
+   * 2. then --> Completed with data
+   * 3. catchError --> Completed with error
+   * 4. thenComplete --> 错误和正确都会走
+ 
+  * Future的执行顺序
+    * 1. Future.sync(computation) 同步任务
+    * 2. Future.microtask(computation) 微任务
+    * 3. Future.value(val)
+      * val是常量等同于microtask
+      * val是异步，按照异步的处理逻辑
+    * 4. Future((){}) 宏任务
+  * Future多任务
+    * 1. Future.any(futures) 相当于Promise.race
+    * 2. Future.wait(futures) 相当于Promise.all
+    * 3. Future.doWhile() // 按条件执行多个future
+    * 4. Future.forEach
+:::
+```dart
+
+
+
+
+```
+### Future.builder
+```dart
+
+
+
+```
+
+
+
+## 生成器
+
+### 同步生成器
+```dart
+
+
+ 
+Iterable<int> getNumber(int n) sync* {
+  int i = 0;
+  while(i < n) {
+    yield i++;
+  }
+}
+
+
+main () {
+  var res = getNumber(5).iterator;
+  // res.moveNext();
+  // print(res.current); // 0 
+  // res.moveNext();
+  // print(res.current); // 1
+
+
+  while(res.moveNext()) {
+    print(res.current);
+  }
+} 
+```
+
+### 异步生成器
