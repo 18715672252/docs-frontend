@@ -71,3 +71,22 @@ keyboardType：用于设置该输入框默认的键盘输入类型，取值如�
 | datetime |   优化后的日期输入键盘；Android上会显示“: -”    |
 | emailAddress | 优化后的电子邮件地址；会显示“@ .” |
 | url | 优化后的url输入键盘； 会显示“/ .” |
+
+
+
+## 跟随组件
+::: info 
+CompositedTransformTarget 目标组件<br>
+CompositedTransformFollower 跟随组件<br>
+
+当CompositedTransformFollower组件创建时会自动跟随<br>
+CompositedTransformTarget组件
+
+
+* CompositedTransformFollower需在CompositedTransformTarget之后创建
+
+可以实现的常见功能：<br>
+创建功能点击的组件使用CompositedTransformTarget包裹
+然后弹出对应的信息框，信息框组件使用CompositedTransformFollower包裹
+
+:::

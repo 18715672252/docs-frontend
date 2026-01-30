@@ -352,3 +352,108 @@ showSnackBarS(BuildContext ctx) {
 }
 
 ```
+
+## OverlayEntry弹框
+### 基础用法
+```dart
+onPressed: () {
+  OverlayEntry overlay = OverlayEntry(
+    builder: (ctx) {
+      return Align(
+        child: Container(
+          width: 100,
+          height: 100,
+          color: Colors.amberAccent,
+        ),
+      );
+    },
+  );
+  // 显示框子
+  Overlay.maybeOf(context)?.insert(overlay);
+  // 隐藏框子
+  // overlay.remove();
+},
+
+```
+### 结合跟随组件用法-点击出现跟随弹框
+```dart
+LayerLink link = LayerLink();
+GestureDetector(
+  onTap: () {
+    if (overlay != null) {
+      overlay?.remove();
+      overlay = null;
+    }
+
+    overlay = OverlayEntry(
+      opaque: false,
+      builder: (octx) {
+        return Positioned.fill(
+          child: Center(
+            child: CompositedTransformFollower(
+              offset: Offset(-150, 0),
+              link: link,
+              showWhenUnlinked: false,
+              followerAnchor: Alignment.bottomLeft,
+              child: TweenAnimationBuilder<double>(
+                  tween: Tween(begin: 0, end: 200),
+                  duration: Duration(milliseconds: 200),
+                  builder: (context, val, widget) {
+                    return Container(
+                      width: 150,
+                      height: val,
+                      decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(12),
+                        ),
+                      ),
+                      child: Text('pppp'),
+                    );
+                  }),
+            ),
+          ),
+        );
+      },
+    );
+    Overlay.of(context).insert(overlay!);
+  },
+  child: CompositedTransformTarget(
+    link: link,
+    child: Icon(CupertinoIcons.sunrise),
+  ),
+),
+
+
+```
+
+
+### 可以移动的OverlayEntry
+```dart
+onPressed: () {
+  double l = 200;
+  OverlayEntry overlay = OverlayEntry(
+    builder: (ctx) {
+      return Positioned(
+        top: l,
+        left: l,
+        child: Container(
+          width: 30,
+          height: 30,
+          color: Colors.amberAccent,
+        ),
+      );
+    },
+  );
+  // 显示框子
+  Overlay.maybeOf(context)?.insert(overlay);
+  Timer.periodic(Duration(seconds: 1), (timer) {
+    l += 10;
+    overlay.markNeedsBuild();
+  });
+  
+  // 隐藏框子
+  // overlay.remove();
+},
+
+```
