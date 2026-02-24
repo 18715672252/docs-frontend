@@ -20,9 +20,8 @@ features:
   - title: SingleChildRenderObjectWidget
     details: 通过底层类自定义组件（手写RenderObject）
     link: /flutter/single-child-render-object-widget
-  - title: 动画组件
-    details: 各种动画组件
-    link: /flutter/animation-component
+  - title: IgnorePointer和AbortPointer原理
+    link: /flutter/ignorePointer-abortPointer
   - title: 特效组件
     details: 各种可以组件平移，旋转，缩放变换的组件
     link: /flutter/special-effects-component
