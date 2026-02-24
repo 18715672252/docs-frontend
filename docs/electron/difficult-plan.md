@@ -23,4 +23,7 @@ features:
   - title: 更新软件后无法自动安装的问题（全量）
     details: 全量更新新的安装包下载下来后，程序自动退出了但没有自动安装
     link: /electron/updater
+  - title: 窗口池
+    details: 全量更新新的安装包下载下来后，程序自动退出了但没有自动安装
+    link: /electron/updater
 ---

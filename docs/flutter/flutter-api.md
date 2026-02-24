@@ -859,3 +859,19 @@ class _ChildDemoState extends State<ChildDemo> {
 找最外层
 
 :::
+
+
+
+## Future实例加定时器构建
+```dart
+import 'dart:async';
+Future<int> setPromise() {
+  final Completer<int> p = Completer();
+  Timer(Duration(seconds: 10), () {
+    p.complete(100);
+  });
+
+  return p.future;
+}
+
+```

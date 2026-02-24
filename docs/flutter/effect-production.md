@@ -23,5 +23,6 @@ features:
     link: /flutter/dialog-checkbox
   - title: List列表滚动保活方案
     link: /flutter/listview-keeplive
-    
+  - title: 获取加载的图片的宽高
+    link: /flutter/simple-components-gather#imageWidhtHeight
 ---

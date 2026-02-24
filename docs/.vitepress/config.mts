@@ -25,7 +25,7 @@ const electrons = [
   // { text: '软件更新-增量更新', link: '/flutter/special-effects-component' },
   // { text: '防脱壳', link: '/flutter/animation-component' },
   { text: '疑难-方案', link: '/electron/difficult-plan' },
-  { text: 'electronAPI', link: '/electron/difficult-plan' },
+  { text: 'electronAPI', link: '/electron/electron-api' },
   // { text: 'win和mac兼容性问题', link: '/flutter/animation-component' },
 ]
 
@@ -124,8 +124,8 @@ export default defineConfig({
       }
     },
     
-    footer: {
-      copyright: 'Copyright © 2026-present 孙'
-    }
+    // footer: {
+    //   copyright: 'Copyright © 2026-present 孙'
+    // }
   }
 })

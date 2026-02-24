@@ -172,3 +172,33 @@ AnimatedSwitcher组件的主要作用就是新旧组件切换时的动画
 CurvedAnimation(parent: _controller, curve: curve)
 
 ```
+
+## 获取图片宽高 {#imageWidhtHeight}
+```dart
+import 'dart:async';
+import 'dart:ui' as ui;
+Future<ui.Image> getImgRect() {
+  final Completer<ui.Image> completer = Completer();
+  final Image image = Image.network(
+      'https://gips2.baidu.com/it/u=641660390,3943119249&fm=3074&app=3074&f=PNG?w=2560&h=1440');
+  // image.image.resolve(configuration)
+  // 监听图片的加载进度
+  image.image.resolve(ImageConfiguration()).addListener(
+    ImageStreamListener(
+      (ImageInfo info, _) {
+        completer.complete(info.image);
+      },
+      onChunk: (ImageChunkEvent chunk) {
+        print(chunk);
+      },
+      onError: (exception, stackTrace) {
+        print(exception);
+        print(stackTrace);
+      },
+    ),
+  );
+
+  return completer.future;
+}
+
+```
