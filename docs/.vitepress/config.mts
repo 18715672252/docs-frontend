@@ -9,7 +9,7 @@ const flutters = [
   { text: '布局组件', link: '/flutter/layout' },
   { text: '特效组件', link: '/flutter/special-effects-component' },
   { text: '动画相关', link: '/flutter/animation-component' },
-  { text: '命中测试-手势', link: '/flutter/flutter-api' },
+  // { text: '命中测试-手势', link: '/flutter/flutter-api' },
   { text: '路由', link: '/flutter/router' },
   { text: '弹框-弹出组件', link: '/flutter/dialog' },
   { text: '效果制作-方案', link: '/flutter/effect-production' },

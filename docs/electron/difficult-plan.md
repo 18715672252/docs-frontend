@@ -23,7 +23,19 @@ features:
   - title: 更新软件后无法自动安装的问题（全量）
     details: 全量更新新的安装包下载下来后，程序自动退出了但没有自动安装
     link: /electron/updater
-  - title: 窗口池
-    details: 全量更新新的安装包下载下来后，程序自动退出了但没有自动安装
-    link: /electron/updater
----
+  - title: Electron无边框模式下禁止双击最大化窗口
+    link: /electron/ques-gather
+  - title: 获取高清屏幕
+    link: /electron/ques-gather
+  - title: win.hide()再使用win.show()会引起窗口闪烁问题
+    link: /electron/ques-gather
+  - title: 主进程打印乱码
+    details: 命令行执行：chcp 65001
+  - title: 新建窗口加载hash路由
+    link: /electron/ques-gather
+  - title: 多窗口通信方案
+    link: /electron/ques-gather
+  - title: 非矩形窗口击穿透透明区域方案
+    link: /electron/irregular-win-click
+  - title: 阻止窗口关闭
+    link: /electron/ques-gather
