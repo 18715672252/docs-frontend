@@ -3,8 +3,8 @@
 layout: home
 
 features:
-  - title: 文字镂空
-    link: /flutter/text-hollowing-out
+  - title: Path相关
+    link: /flutter/path
   - title: 转盘抽奖
     link: /flutter/roulette-lottery
   - title: 字体的斑马效果

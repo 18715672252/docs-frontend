@@ -202,3 +202,70 @@ Future<ui.Image> getImgRect() {
 }
 
 ```
+
+
+## 横竖滚动条和宽度过小时自动出现滚动条 {#vhscrollBar}
+``` dart 
+class Demo extends StatefulWidget {
+  const Demo({super.key});
+
+  @override
+  State<Demo> createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  ScrollController vCtrl = ScrollController();
+
+  ScrollController hCtrl = ScrollController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Row(
+        children: [
+          Container(
+            width: 300,
+            height: double.infinity,
+            color: Colors.amberAccent,
+          ),
+          Expanded(
+            child: Scrollbar(
+              controller: hCtrl,
+              child: LayoutBuilder(
+                builder: (ctx, con) {
+                  print(con);
+                  return Scrollbar(
+                    controller: vCtrl,
+                    notificationPredicate: (notification) {
+                      // 重要一定要写
+                      return notification.depth == 1;
+                    },
+                    child: SingleChildScrollView(
+                      controller: hCtrl,
+                      scrollDirection: Axis.horizontal,
+                      child: SizedBox(
+                        width: max(500, con.maxWidth),
+                        height: double.infinity,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          controller: vCtrl,
+                          child: SizedBox(
+                            height: 6000,
+                            child: Text('孙成龙孙成龙孙承龙'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+```

@@ -39,3 +39,5 @@ features:
     link: /electron/irregular-win-click
   - title: 阻止窗口关闭
     link: /electron/ques-gather
+  - title: fs.copyFile无法赋值asar内部文件的问题
+    link: /electron/ques-gather

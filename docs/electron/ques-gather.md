@@ -115,3 +115,51 @@ mainWindow.on('close', async (ev) => {
   })
 
 ```
+
+## fs.copyFile无法赋值asar内部文件的问题
+::: info
+方案一<br>
+先通过 fs.readFile 读取 ASAR 内文件的二进制内容，再通过 fs.writeFile 写入目标路径，替代 fs.copyFile<br>
+
+
+
+方案二<br>
+如果你的代码强依赖 fs.copyFile（比如需要保留文件的 atime/mtime 等元数据），需要先将 ASAR 内的文件解压到临时目录，再调用 fs.copyFile
+:::
+``` js 
+const fs = require('fs').promises; // 使用 promise 版本，更易处理异步
+const path = require('path');
+
+/**
+ * 替代 fs.copyFile，支持从 ASAR 内复制文件
+ * @param {string} srcPath - 源路径（可包含 ASAR 内路径，如 app.asar/assets/file.txt）
+ * @param {string} destPath - 目标路径
+ * @param {number} [mode=0o666] - 文件权限，和 fs.copyFile 一致
+ */
+async function copyFileFromAsar(srcPath, destPath, mode = 0o666) {
+  try {
+    // 1. 读取 ASAR 内文件的内容（Electron 已兼容 fs.readFile 读取 ASAR 内文件）
+    const fileBuffer = await fs.readFile(srcPath);
+    
+    // 2. 确保目标目录存在（避免写入失败）
+    const destDir = path.dirname(destPath);
+    await fs.mkdir(destDir, { recursive: true });
+    
+    // 3. 写入目标文件（等效于 copyFile，保留权限）
+    await fs.writeFile(destPath, fileBuffer, { mode });
+    
+    console.log(`文件复制成功：${srcPath} -> ${destPath}`);
+  } catch (err) {
+    console.error('复制 ASAR 内文件失败：', err);
+    throw err; // 抛出错误让上层处理
+  }
+}
+
+// 示例调用（Electron 环境）
+// __dirname 是你的应用目录，打包后会指向 app.asar 内的对应目录
+const asarInnerFile = path.join(__dirname, 'assets/config.json'); // ASAR 内的文件
+const targetFile = path.join(process.env.APPDATA, 'MyApp', 'config.json'); // 外部目标路径
+copyFileFromAsar(asarInnerFile, targetFile);
+
+
+```
