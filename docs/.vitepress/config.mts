@@ -13,10 +13,11 @@ const flutters = [
   { text: '路由', link: '/flutter/router' },
   { text: '弹框-弹出组件', link: '/flutter/dialog' },
   { text: '效果制作-方案', link: '/flutter/effect-production' },
+  { text: '基础组件', link: '/flutter/basic-components'},
   { text: 'Flutter API', link: '/flutter/flutter-api' },
-  { text: '基础组件', link: 'flutter/basic-components'},
-  { text: 'Flutter高级', link: 'flutter/flutter-advanced'},
-  { text: '三方库', link: 'flutter/packs'},
+
+  { text: 'Flutter高级', link: '/flutter/flutter-advanced'},
+  { text: '三方库', link: '/flutter/packs'},
 ]
 
 const electrons = [
@@ -70,7 +71,7 @@ export default defineConfig({
       { text: 'Electron', items: electrons },
       { text: 'Flutter', items: flutters },
       { text: 'Dart', items: darts },
-      { text: '前端', items: vueReact },
+      // { text: '前端', items: vueReact },
       { text: '算法集合', items: algorithms },
     ],
 
