@@ -27,4 +27,8 @@ features:
     link: /flutter/simple-components-gather#imageWidhtHeight
   - title: 实现横竖滚动条
     link: /flutter/simple-components-gather#vhscrollBar
+  - title: 摇杆的实现
+    link: /flutter/game-joystick
+  - title: 绘制刻度尺并滚动
+    link: /flutter/ruler
 ---
