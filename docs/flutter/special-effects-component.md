@@ -28,4 +28,10 @@ features:
     details: 根据路径裁剪
   - title: Opacity
     details: 透明度组件
+  - title: InteractiveViewer
+    details: 拖拽缩放移动组件
+    link: /flutter/interactiveViewer
+  - title: RawMagnifier
+    details: 放大镜组件
+    link: /flutter/raw-magnifier
 ---

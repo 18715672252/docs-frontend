@@ -20,9 +20,9 @@ features:
   - title: Provider
     details: 状态管理
     link: /flutter/provider
-  - title: 动画组件
-    details: 各种动画组件
-    link: /flutter/animation-component
+  - title: 下拉刷新组件
+    details: 下拉刷新组件
+    link: /flutter/refresh
   - title: 特效组件
     details: 各种可以组件平移，旋转，缩放变换的组件
     link: /flutter/special-effects-component
