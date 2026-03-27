@@ -41,3 +41,6 @@ features:
     link: /electron/ques-gather
   - title: fs.copyFile无法赋值asar内部文件的问题
     link: /electron/ques-gather
+  - title: 增量更新
+    details: 整体替换asar的方式
+    link: /electron/incremental-update
