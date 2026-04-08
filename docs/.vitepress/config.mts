@@ -33,7 +33,7 @@ const electrons = [
 const vueReact = [
   { text: 'Vue2.0', link: 'www.baidu.com' },
   { text: 'Vue3.0', link: '/flutter/special-effects-component' },
-  { text: 'React', link: '/flutter/special-effects-component' },
+  { text: 'React', link: '/front-end/react' },
   { text: 'Js基础', link: '/flutter/special-effects-component' },
   { text: 'Js高级', link: '/flutter/special-effects-component' },
   { text: 'Js程序设计', link: '/flutter/special-effects-component' },
@@ -71,7 +71,7 @@ export default defineConfig({
       { text: 'Electron', items: electrons },
       { text: 'Flutter', items: flutters },
       { text: 'Dart', items: darts },
-      // { text: '前端', items: vueReact },
+      { text: '前端', items: vueReact },
       { text: '算法集合', items: algorithms },
     ],
 
